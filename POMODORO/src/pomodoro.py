@@ -6,7 +6,7 @@ import time
 from config import WORK_TIME, BREAK_TIME
 from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end
 
-# Función para contar el tiempo en segundos
+# Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
 def countdown(minutes):
     """
     Realiza una cuenta regresiva para el número de minutos especificado.
