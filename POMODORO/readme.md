@@ -38,4 +38,6 @@ pomodoro-timer/
 
 Ejecuta el script principal para iniciar el temporizador Pomodoro. Al iniciar, se te pedirá configurar los tiempos de trabajo y descanso (con valores por defecto de 25 minutos de trabajo y 5 minutos de descanso), y el número de ciclos a completar (por defecto 4). Los valores deben ser números positivos.
 
-El temporizador cuenta los ciclos completados y muestra estadísticas al final de cada uno. Cada 4 ciclos, se realiza un descanso largo de 15 minutos en lugar del descanso corto. Al completar todos los ciclos, muestra un resumen final.
+El temporizador cuenta los ciclos completados y muestra estadísticas al final de cada uno. Cada 4 ciclos, se realiza un descanso largo de 15 minutos en lugar del descanso corto. Al completar todos los ciclos, muestra un resumen final con un beep sonoro.
+
+Las notificaciones incluyen mensajes destacados en color y sonidos beep compatibles con Windows, Linux y macOS.

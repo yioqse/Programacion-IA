@@ -4,7 +4,7 @@
 
 import time
 from config import WORK_TIME, BREAK_TIME, LONG_BREAK_TIME, TOTAL_CYCLES, configure
-from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end
+from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end, play_final_beep
 
 # Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
 def countdown(minutes):
@@ -55,6 +55,7 @@ def run_pomodoro():
     
     # Resumen final
     print(f"\n¡Sesión completada! Total de pomodoros: {TOTAL_CYCLES[0]}")
+    play_final_beep()
     print("Presiona Enter para salir.")
     input()
 

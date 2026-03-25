@@ -56,4 +56,19 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
 - Cambios en pomodoro.py: Importar TOTAL_CYCLES, cambiar while True a while cycle <= TOTAL_CYCLES[0], agregar resumen final al terminar, y actualizar el main para no usar try-except.
 - Actualización en README.md: Mencionar la configuración de ciclos y el resumen final.
 - Resultado: La sesión ahora es finita, con resumen al completar los ciclos configurados.
+
+### Sesión 4: Fase 6 - Notificaciones y sonido
+- Fecha: [Fecha actual]
+- IA utilizada: GitHub Copilot / Grok
+- Tareas realizadas:
+  - Modificación de notificaciones.py para soporte cross-platform (Windows/Linux/Mac) usando platform.system().
+  - Emisión de beep al terminar la sesión completa.
+  - Mensajes visuales destacados con ANSI escape codes para color y negrita.
+- Preguntas para la IA:
+  - "¿Cómo emito un beep sonoro desde Python en distintos sistemas operativos?"
+  - "¿Cómo detecto el sistema operativo con Python para usar comandos distintos?"
+- Respuestas de la IA:
+  - Para emitir beep: Usa winsound.Beep() en Windows; en Linux/Mac, imprime '\a' (carácter de campana) que funciona en la mayoría de terminales.
+  - Para detectar OS: Importa el módulo platform y usa platform.system() que devuelve 'Windows', 'Linux', 'Darwin' (Mac), etc., para condicionar el código.
+- Modificaciones realizadas: Actualizado play_sound() con detección de OS, show_notification() con colores ANSI, agregado play_final_beep() y llamado en pomodoro.py.
 - Ahora pruebo los cambios realizados manualmente
