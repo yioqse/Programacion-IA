@@ -113,8 +113,12 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
   - "¿Cómo creo una barra de progreso en terminal con Python?"
   - "¿Cómo limpio la pantalla en terminal en cada actualización del tiempo?"
   - "¿Cómo documento funcionalidad con ejemplos de uso en un README?"
+  - "¿Cómo escribo docstrings correctamente en Python?"
+  - "¿Qué información debe incluir un buen docstring para una función de tiempo?"
 - Respuestas de la IA:
   - Barra de progreso: calcula porcentaje (elapsed/total), dibuja con bloques llenos/vacíos y actualiza con retorno de carro '\r'.
   - Limpiar pantalla: usar `os.system('cls')` para Windows y `os.system('clear')` para Linux/Mac.
   - Documentación: mantén README con descripción general, incluye guía rápida y enlaza a docs adicionales con ejemplos de comando y flujo de uso.
+  - Docstrings: escribe la descripción breve de propósito, parámetros (`:param`), retorno (`:return`) y efectos secundarios. Usa estilo PEP 257 y mantén con triple comillas.
+  - Funciones de tiempo: incluye qué mide, unidades (segundos/minutos), formato de valor, cómo se pausa/reanuda y qué eventos controla.
 - Modificaciones realizadas: docs/asistencia_ia.md actualizada con fase 9, README enlaza documento nuevo, añadido docstrings en todas las funciones.
