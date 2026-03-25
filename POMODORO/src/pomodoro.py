@@ -2,6 +2,7 @@
 # Este es el archivo principal del temporizador Pomodoro.
 # Gestiona el ciclo de trabajo y descanso, utilizando los módulos de configuración y notificaciones.
 
+import os
 import time
 import platform
 import sys
@@ -15,29 +16,45 @@ pause_event = threading.Event()
 exit_event = threading.Event()
 
 # Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
+def draw_progress_bar(elapsed, total, width=30):
+    progress = min(max(elapsed / total, 0), 1)
+    filled = int(progress * width)
+    bar = '█' * filled + '-' * (width - filled)
+    return f"[{bar}] {int(progress*100):3d}%"
+
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def countdown(minutes):
     """
     Realiza una cuenta regresiva para el número de minutos especificado.
-    Muestra el tiempo restante en la terminal.
+    Muestra el tiempo restante en la terminal y barra de progreso.
     :param minutes: Número de minutos para la cuenta regresiva
     """
     total_seconds = int(minutes * 60)
+    elapsed = 0
+
     while total_seconds > 0 and not exit_event.is_set():
         if pause_event.is_set():
-            print("[PAUSADO] Presiona 'p' para reanudar...", end='\r')
+            print("[PAUSADO] Presiona 'p' para reanudar...           ", end='\r')
             time.sleep(0.5)
             continue
 
         mins, secs = divmod(total_seconds, 60)
         timer = f'{int(mins):02d}:{int(secs):02d}'
-        print(timer, end='\r')  # Imprime en la misma línea
+        progress = draw_progress_bar(elapsed, int(minutes * 60))
+        print(f"{progress} {timer}", end='\r')
         time.sleep(1)
         total_seconds -= 1
+        elapsed += 1
 
     if exit_event.is_set():
         return
 
-    print("00:00")  # Cuando termina
+    print("00:00", end='\n')
+
 
 
 def keyboard_listener():
@@ -76,6 +93,29 @@ def keyboard_listener():
             exit_event.set()
             print("\n***** Saliendo... *****")
             break
+
+
+def show_menu():
+    while True:
+        clear_screen()
+        print("=== Temporizador Pomodoro interactivo ===")
+        print("1) Configurar sesión")
+        print("2) Iniciar sesión")
+        print("3) Salir")
+        choice = input("Selecciona una opción (1-3): ").strip()
+
+        if choice == '1':
+            configure()
+            input("Configuración guardada. Presiona Enter para volver al menú...")
+        elif choice == '2':
+            clear_screen()
+            print("Iniciando temporizador... (p=pausa/reanudar, q=salir)")
+            return
+        elif choice == '3':
+            exit(0)
+        else:
+            print("Opción inválida. Intenta de nuevo.")
+            time.sleep(1)
 
 
 # Función principal para ejecutar el ciclo Pomodoro
@@ -128,7 +168,8 @@ def run_pomodoro():
 # Punto de entrada del programa
 if __name__ == "__main__":
     print("Bienvenido al Temporizador Pomodoro")
-    configure()  # Configurar tiempos personalizables
+
+    show_menu()
 
     listener_thread = threading.Thread(target=keyboard_listener, daemon=True)
     listener_thread.start()

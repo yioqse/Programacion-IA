@@ -86,3 +86,18 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
   - Para capturar pulsaciones sin bloquear: utiliza un hilo separado que lea teclas con msvcrt (Windows) o select/sys.stdin (Linux/Mac) y actualice eventos compartidos.
   - Para pausa y reanudación en bucle: usa un Event (pause_event). En cada iteración del bucle, si está set, mantén el estado de pausa y no decrementes el reloj, y vuelve al modo normal cuando se desactive.
 - Modificaciones realizadas: added keyboard_listener(), pause_event/exit_event, pause-state en countdown y control en loop principal.
+
+### Sesión 6: Fase 8 - Interfaz de usuario en terminal
+- Fecha: [Fecha actual]
+- IA utilizada: GitHub Copilot / Grok
+- Tareas realizadas:
+  - Implementación de menú interactivo principal en pomodoro.py con opciones configurar/sesión/salir.
+  - Implementación de barra de progreso en cada countdown mediante draw_progress_bar.
+  - Limpieza de pantalla en cada menú con clear_screen() para mejor experiencia.
+- Preguntas para la IA:
+  - "¿Cómo creo una barra de progreso en terminal con Python?"
+  - "¿Cómo limpio la pantalla en terminal en cada actualización del tiempo?"
+- Respuestas de la IA:
+  - Para barra de progreso: construir string con bloques llenos (█) y vacíos (-) basado en porcentaje; imprimir en la misma línea con '\r'.
+  - Para limpiar pantalla: usar `os.system('cls')` en Windows y `os.system('clear')` en Linux/Mac o abstraer con una función `clear_screen()`.
+- Modificaciones realizadas: Agregado clear_screen(), show_menu(), draw_progress_bar(), ajuste de flujo en __main__ para iniciar desde el menú.

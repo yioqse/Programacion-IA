@@ -42,4 +42,9 @@ El temporizador cuenta los ciclos completados y muestra estadísticas al final d
 
 Además, el temporizador permite pausar/reanudar en cualquier momento con la tecla 'p' y salir con la tecla 'q'. El estado actual (corriendo/pausado) se muestra en pantalla.
 
+Fase 8: Interfaz de terminal
+- Al iniciar se muestra un menú interactivo con opciones de configurar sesión, iniciar y salir.
+- Se muestra una barra de progreso visual durante cada cuenta regresiva.
+- La pantalla se limpia entre menús y para mejorar la visualización.
+
 Las notificaciones incluyen mensajes destacados en color y sonidos beep compatibles con Windows, Linux y macOS.
