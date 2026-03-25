@@ -3,7 +3,7 @@
 # Gestiona el ciclo de trabajo y descanso, utilizando los módulos de configuración y notificaciones.
 
 import time
-from config import WORK_TIME, BREAK_TIME
+from config import WORK_TIME, BREAK_TIME, configure
 from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end
 
 # Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
@@ -46,8 +46,12 @@ def run_pomodoro():
 # Punto de entrada del programa
 if __name__ == "__main__":
     print("Bienvenido al Temporizador Pomodoro")
+    configure()  # Configurar tiempos personalizables
     print("Presiona Ctrl+C para detener.")
     try:
+        run_pomodoro()
+    except KeyboardInterrupt:
+        print("\nTemporizador detenido por el usuario.")
         run_pomodoro()
     except KeyboardInterrupt:
         print("\nTemporizador detenido.")
