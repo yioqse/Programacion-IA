@@ -5,16 +5,22 @@
 import os
 import winsound
 
-# Función para reproducir un sonido de notificación
-def play_sound(sound_file):
+# Función para reproducir un sonido de notificación usando Beep
+def play_sound(sound_type):
     """
-    Reproduce un archivo de sonido.
-    :param sound_file: Ruta al archivo de sonido (ej. 'beep.wav')
+    Reproduce un sonido de beep según el tipo.
+    :param sound_type: Tipo de sonido ('work_start', 'work_end', 'break_start', 'break_end')
     """
-    if os.path.exists(sound_file):
-        winsound.PlaySound(sound_file, winsound.SND_FILENAME)
+    if sound_type == 'work_start':
+        winsound.Beep(1000, 500)  # Beep alto para inicio de trabajo
+    elif sound_type == 'work_end':
+        winsound.Beep(800, 500)   # Beep medio para fin de trabajo
+    elif sound_type == 'break_start':
+        winsound.Beep(600, 500)  # Beep bajo para inicio de descanso
+    elif sound_type == 'break_end':
+        winsound.Beep(1000, 500)  # Beep alto para fin de descanso
     else:
-        print(f"Archivo de sonido no encontrado: {sound_file}")
+        winsound.Beep(500, 500)  # Beep por defecto
 
 # Función para mostrar una notificación en la terminal
 def show_notification(message):
@@ -27,19 +33,19 @@ def show_notification(message):
 # Función para notificar el inicio de un período de trabajo
 def notify_work_start():
     show_notification("¡Comienza el tiempo de trabajo!")
-    play_sound('sounds/work_start.wav')  # Asumiendo que hay archivos de sonido
+    play_sound('work_start')
 
 # Función para notificar el fin de un período de trabajo
 def notify_work_end():
     show_notification("¡Tiempo de trabajo terminado! Toma un descanso.")
-    play_sound('sounds/work_end.wav')
+    play_sound('work_end')
 
 # Función para notificar el inicio de un descanso
 def notify_break_start():
     show_notification("¡Comienza el descanso!")
-    play_sound('sounds/break_start.wav')
+    play_sound('break_start')
 
 # Función para notificar el fin de un descanso
 def notify_break_end():
     show_notification("¡Descanso terminado! Vuelve al trabajo.")
-    play_sound('sounds/break_end.wav')
+    play_sound('break_end')
