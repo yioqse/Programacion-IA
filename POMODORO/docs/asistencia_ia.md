@@ -71,4 +71,18 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
   - Para emitir beep: Usa winsound.Beep() en Windows; en Linux/Mac, imprime '\a' (carácter de campana) que funciona en la mayoría de terminales.
   - Para detectar OS: Importa el módulo platform y usa platform.system() que devuelve 'Windows', 'Linux', 'Darwin' (Mac), etc., para condicionar el código.
 - Modificaciones realizadas: Actualizado play_sound() con detección de OS, show_notification() con colores ANSI, agregado play_final_beep() y llamado en pomodoro.py.
-- Ahora pruebo los cambios realizados manualmente
+
+### Sesión 5: Fase 7 - Pausa y reanudación
+- Fecha: [Fecha actual]
+- IA utilizada: GitHub Copilot / Grok
+- Tareas realizadas:
+  - Implementación de pausa/reanudar por tecla en pomodoro.py usando subhilo de teclado (p/q).
+  - Modificación de countdown() para respetar estado de pausado y detenerse con q/exit.
+  - Mostrar estado actual (corriendo/pausado) en la terminal.
+- Preguntas para la IA:
+  - "¿Cómo capturo pulsaciones de teclado sin bloquear el hilo principal en Python?"
+  - "¿Cómo implemento pausa y reanudación en un bucle de tiempo?"
+- Respuestas de la IA:
+  - Para capturar pulsaciones sin bloquear: utiliza un hilo separado que lea teclas con msvcrt (Windows) o select/sys.stdin (Linux/Mac) y actualice eventos compartidos.
+  - Para pausa y reanudación en bucle: usa un Event (pause_event). En cada iteración del bucle, si está set, mantén el estado de pausa y no decrementes el reloj, y vuelve al modo normal cuando se desactive.
+- Modificaciones realizadas: added keyboard_listener(), pause_event/exit_event, pause-state en countdown y control en loop principal.

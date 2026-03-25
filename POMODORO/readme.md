@@ -40,4 +40,6 @@ Ejecuta el script principal para iniciar el temporizador Pomodoro. Al iniciar, s
 
 El temporizador cuenta los ciclos completados y muestra estadísticas al final de cada uno. Cada 4 ciclos, se realiza un descanso largo de 15 minutos en lugar del descanso corto. Al completar todos los ciclos, muestra un resumen final con un beep sonoro.
 
+Además, el temporizador permite pausar/reanudar en cualquier momento con la tecla 'p' y salir con la tecla 'q'. El estado actual (corriendo/pausado) se muestra en pantalla.
+
 Las notificaciones incluyen mensajes destacados en color y sonidos beep compatibles con Windows, Linux y macOS.
