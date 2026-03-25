@@ -15,8 +15,15 @@ from notificaciones import notify_work_start, notify_work_end, notify_break_star
 pause_event = threading.Event()
 exit_event = threading.Event()
 
-# Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
+# Función para formar la barra de progreso visual
 def draw_progress_bar(elapsed, total, width=30):
+    """
+    Construye un string de barra de progreso en terminal.
+    :param elapsed: Segundos transcurridos
+    :param total: Segundos totales
+    :param width: Ancho de la barra en caracteres
+    :return: String de barra de progreso
+    """
     progress = min(max(elapsed / total, 0), 1)
     filled = int(progress * width)
     bar = '█' * filled + '-' * (width - filled)
@@ -24,6 +31,9 @@ def draw_progress_bar(elapsed, total, width=30):
 
 
 def clear_screen():
+    """
+    Borra la pantalla del terminal en Windows, Linux o macOS.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -96,6 +106,9 @@ def keyboard_listener():
 
 
 def show_menu():
+    """
+    Muestra el menú principal interactivo y gestiona las acciones del usuario.
+    """
     while True:
         clear_screen()
         print("=== Temporizador Pomodoro interactivo ===")

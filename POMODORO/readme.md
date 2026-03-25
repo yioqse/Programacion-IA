@@ -47,4 +47,8 @@ Fase 8: Interfaz de terminal
 - Se muestra una barra de progreso visual durante cada cuenta regresiva.
 - La pantalla se limpia entre menús y para mejorar la visualización.
 
+## Documentación de uso avanzada
+
+Se agregó un documento de referencia en `docs/documentacion_asistencia_ia.md` que incluye ejemplos de uso directo y pasos para ejecutar con configuración rápida.
+
 Las notificaciones incluyen mensajes destacados en color y sonidos beep compatibles con Windows, Linux y macOS.
