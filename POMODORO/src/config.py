@@ -6,11 +6,11 @@
 DEFAULT_WORK_TIME = 25
 DEFAULT_BREAK_TIME = 5
 
-# Tiempo de trabajo en minutos
-WORK_TIME = DEFAULT_WORK_TIME
+# Tiempo de trabajo en minutos (usando lista para mutabilidad)
+WORK_TIME = [DEFAULT_WORK_TIME]
 
-# Tiempo de descanso en minutos
-BREAK_TIME = DEFAULT_BREAK_TIME
+# Tiempo de descanso en minutos (usando lista para mutabilidad)
+BREAK_TIME = [DEFAULT_BREAK_TIME]
 
 # Número de ciclos Pomodoro antes de un descanso largo (opcional)
 CYCLES_BEFORE_LONG_BREAK = 4
@@ -41,10 +41,9 @@ def get_positive_float(prompt, default):
 def configure():
     """
     Permite al usuario configurar los tiempos de trabajo y descanso.
-    Actualiza las variables globales WORK_TIME y BREAK_TIME.
+    Actualiza las listas WORK_TIME y BREAK_TIME.
     """
-    global WORK_TIME, BREAK_TIME
     print("\n--- Configuración del Temporizador Pomodoro ---")
-    WORK_TIME = get_positive_float("Ingresa el tiempo de trabajo en minutos", DEFAULT_WORK_TIME)
-    BREAK_TIME = get_positive_float("Ingresa el tiempo de descanso en minutos", DEFAULT_BREAK_TIME)
-    print(f"Configuración actualizada: Trabajo = {WORK_TIME} min, Descanso = {BREAK_TIME} min\n")
+    WORK_TIME[0] = get_positive_float("Ingresa el tiempo de trabajo en minutos", DEFAULT_WORK_TIME)
+    BREAK_TIME[0] = get_positive_float("Ingresa el tiempo de descanso en minutos", DEFAULT_BREAK_TIME)
+    print(f"Configuración actualizada: Trabajo = {WORK_TIME[0]} min, Descanso = {BREAK_TIME[0]} min\n")

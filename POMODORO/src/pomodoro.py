@@ -33,12 +33,12 @@ def run_pomodoro():
         
         # Período de trabajo
         notify_work_start()
-        countdown(WORK_TIME)
+        countdown(WORK_TIME[0])
         notify_work_end()
         
         # Período de descanso
         notify_break_start()
-        countdown(BREAK_TIME)
+        countdown(BREAK_TIME[0])
         notify_break_end()
         
         cycle += 1
