@@ -34,3 +34,18 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
 - Solución implementada: Cambié WORK_TIME y BREAK_TIME a listas mutables ([DEFAULT_WORK_TIME], [DEFAULT_BREAK_TIME]) en config.py. En la función configure(), modifico WORK_TIME[0] y BREAK_TIME[0] en lugar de reasignar. En pomodoro.py, uso WORK_TIME[0] y BREAK_TIME[0] para acceder a los valores actualizados.
 - Archivos modificados: src/config.py (cambio a listas), src/pomodoro.py (acceso con [0]).
 - Resultado: Ahora la configuración personalizada (ej. 2 min trabajo) se refleja correctamente en el countdown del temporizador.
+
+### Sesión 3: Fase 5 - Contador de ciclos
+- Fecha: [Fecha actual]
+- IA utilizada: GitHub Copilot / Grok
+- Tareas realizadas:
+  - Modificación de pomodoro.py para contar ciclos y mostrar estadísticas al final de cada uno.
+  - Implementación de descanso largo cada 4 ciclos usando LONG_BREAK_TIME.
+  - Actualización del README.md con la nueva funcionalidad.
+- Preguntas para la IA:
+  - "¿Cómo cuento iteraciones en un bucle y ejecuto algo cada N repeticiones?"
+  - "¿Cómo muestro un resumen de ciclos completados en Python?"
+- Respuestas de la IA:
+  - Para contar iteraciones y ejecutar cada N: Usa una variable contador que incrementa en cada iteración. Verifica `if contador % N == 0` para ejecutar la acción especial.
+  - Para mostrar un resumen: Imprime mensajes con f-strings, como `print(f"Estadísticas: Pomodoros completados: {contador}")` al final de cada ciclo.
+- Modificaciones realizadas: Agregado LONG_BREAK_TIME a imports, lógica condicional para descanso largo, y print de estadísticas en run_pomodoro().

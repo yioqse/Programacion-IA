@@ -3,7 +3,7 @@
 # Gestiona el ciclo de trabajo y descanso, utilizando los módulos de configuración y notificaciones.
 
 import time
-from config import WORK_TIME, BREAK_TIME, configure
+from config import WORK_TIME, BREAK_TIME, LONG_BREAK_TIME, configure
 from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end
 
 # Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
@@ -26,6 +26,7 @@ def countdown(minutes):
 def run_pomodoro():
     """
     Ejecuta el ciclo infinito de Pomodoro: trabajo -> descanso -> repetir.
+    Incluye descanso largo cada 4 ciclos y muestra estadísticas.
     """
     cycle = 1
     while True:
@@ -36,10 +37,19 @@ def run_pomodoro():
         countdown(WORK_TIME[0])
         notify_work_end()
         
-        # Período de descanso
-        notify_break_start()
-        countdown(BREAK_TIME[0])
-        notify_break_end()
+        # Período de descanso: largo cada 4 ciclos
+        if cycle % 4 == 0:
+            print(f"¡Descanso largo después de {cycle} pomodoros!")
+            notify_break_start()
+            countdown(LONG_BREAK_TIME)
+            notify_break_end()
+        else:
+            notify_break_start()
+            countdown(BREAK_TIME[0])
+            notify_break_end()
+        
+        # Mostrar estadísticas
+        print(f"Estadísticas: Pomodoros completados: {cycle}")
         
         cycle += 1
 
