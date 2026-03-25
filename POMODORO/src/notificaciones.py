@@ -1,9 +1,9 @@
 # notificaciones.py
 # Este módulo maneja las notificaciones y sonidos del temporizador.
-# Utiliza la biblioteca playsound para reproducir sonidos y print para notificaciones en terminal.
+# Utiliza winsound para reproducir sonidos en Windows y print para notificaciones en terminal.
 
 import os
-from playsound import playsound
+import winsound
 
 # Función para reproducir un sonido de notificación
 def play_sound(sound_file):
@@ -12,7 +12,7 @@ def play_sound(sound_file):
     :param sound_file: Ruta al archivo de sonido (ej. 'beep.wav')
     """
     if os.path.exists(sound_file):
-        playsound(sound_file)
+        winsound.PlaySound(sound_file, winsound.SND_FILENAME)
     else:
         print(f"Archivo de sonido no encontrado: {sound_file}")
 

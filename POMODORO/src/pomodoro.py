@@ -16,7 +16,7 @@ def countdown(minutes):
     total_seconds = minutes * 60
     while total_seconds > 0:
         mins, secs = divmod(total_seconds, 60)
-        timer = f'{mins:02d}:{secs:02d}'
+        timer = f'{int(mins):02d}:{int(secs):02d}'
         print(timer, end='\r')  # Imprime en la misma línea
         time.sleep(1)
         total_seconds -= 1
