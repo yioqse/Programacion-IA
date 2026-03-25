@@ -12,8 +12,8 @@ WORK_TIME = [DEFAULT_WORK_TIME]
 # Tiempo de descanso en minutos (usando lista para mutabilidad)
 BREAK_TIME = [DEFAULT_BREAK_TIME]
 
-# Número de ciclos Pomodoro antes de un descanso largo (opcional)
-CYCLES_BEFORE_LONG_BREAK = 4
+# Número de ciclos a completar
+TOTAL_CYCLES = [4]
 
 # Tiempo de descanso largo en minutos
 LONG_BREAK_TIME = 15
@@ -46,4 +46,5 @@ def configure():
     print("\n--- Configuración del Temporizador Pomodoro ---")
     WORK_TIME[0] = get_positive_float("Ingresa el tiempo de trabajo en minutos", DEFAULT_WORK_TIME)
     BREAK_TIME[0] = get_positive_float("Ingresa el tiempo de descanso en minutos", DEFAULT_BREAK_TIME)
-    print(f"Configuración actualizada: Trabajo = {WORK_TIME[0]} min, Descanso = {BREAK_TIME[0]} min\n")
+    TOTAL_CYCLES[0] = int(get_positive_float("Ingresa el número de ciclos a completar", 4))
+    print(f"Configuración actualizada: Trabajo = {WORK_TIME[0]} min, Descanso = {BREAK_TIME[0]} min, Ciclos = {TOTAL_CYCLES[0]}")

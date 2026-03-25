@@ -3,7 +3,7 @@
 # Gestiona el ciclo de trabajo y descanso, utilizando los módulos de configuración y notificaciones.
 
 import time
-from config import WORK_TIME, BREAK_TIME, LONG_BREAK_TIME, configure
+from config import WORK_TIME, BREAK_TIME, LONG_BREAK_TIME, TOTAL_CYCLES, configure
 from notificaciones import notify_work_start, notify_work_end, notify_break_start, notify_break_end
 
 # Función para contar el tiempo en segundos. Muestra el tiempo restante en formato MM:SS.
@@ -25,11 +25,11 @@ def countdown(minutes):
 # Función principal para ejecutar el ciclo Pomodoro
 def run_pomodoro():
     """
-    Ejecuta el ciclo infinito de Pomodoro: trabajo -> descanso -> repetir.
+    Ejecuta el ciclo finito de Pomodoro hasta completar el número configurado de ciclos.
     Incluye descanso largo cada 4 ciclos y muestra estadísticas.
     """
     cycle = 1
-    while True:
+    while cycle <= TOTAL_CYCLES[0]:
         print(f"\n--- Ciclo {cycle} ---")
         
         # Período de trabajo
@@ -52,16 +52,15 @@ def run_pomodoro():
         print(f"Estadísticas: Pomodoros completados: {cycle}")
         
         cycle += 1
+    
+    # Resumen final
+    print(f"\n¡Sesión completada! Total de pomodoros: {TOTAL_CYCLES[0]}")
+    print("Presiona Enter para salir.")
+    input()
 
 # Punto de entrada del programa
 if __name__ == "__main__":
     print("Bienvenido al Temporizador Pomodoro")
     configure()  # Configurar tiempos personalizables
-    print("Presiona Ctrl+C para detener.")
-    try:
-        run_pomodoro()
-    except KeyboardInterrupt:
-        print("\nTemporizador detenido por el usuario.")
-        run_pomodoro()
-    except KeyboardInterrupt:
-        print("\nTemporizador detenido.")
+    print("Presiona Ctrl+C para detener en cualquier momento.")
+    run_pomodoro()

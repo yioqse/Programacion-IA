@@ -49,3 +49,11 @@ Este documento registra el proceso de asistencia de herramientas de IA durante e
   - Para contar iteraciones y ejecutar cada N: Usa una variable contador que incrementa en cada iteración. Verifica `if contador % N == 0` para ejecutar la acción especial.
   - Para mostrar un resumen: Imprime mensajes con f-strings, como `print(f"Estadísticas: Pomodoros completados: {contador}")` al final de cada ciclo.
 - Modificaciones realizadas: Agregado LONG_BREAK_TIME a imports, lógica condicional para descanso largo, y print de estadísticas en run_pomodoro().
+
+### Commit: Add configurable number of cycles
+- Mejora implementada: Agregué configuración para el número total de ciclos a completar, cambiando el bucle infinito a finito. Ahora el usuario puede especificar cuántos pomodoros quiere hacer en una sesión.
+- Cambios en config.py: Nueva variable TOTAL_CYCLES como lista mutable, y prompt en configure() para pedir el número de ciclos (por defecto 4).
+- Cambios en pomodoro.py: Importar TOTAL_CYCLES, cambiar while True a while cycle <= TOTAL_CYCLES[0], agregar resumen final al terminar, y actualizar el main para no usar try-except.
+- Actualización en README.md: Mencionar la configuración de ciclos y el resumen final.
+- Resultado: La sesión ahora es finita, con resumen al completar los ciclos configurados.
+- Ahora pruebo los cambios realizados manualmente
