@@ -52,3 +52,12 @@ Fase 8: Interfaz de terminal
 Se agregó un documento de referencia en `docs/documentacion_asistencia_ia.md` que incluye ejemplos de uso directo y pasos para ejecutar con configuración rápida.
 
 Las notificaciones incluyen mensajes destacados en color y sonidos beep compatibles con Windows, Linux y macOS.
+
+## Pruebas (Tests)
+
+El proyecto incluye una suite completa de pruebas automatizadas (unitarias y de integración) desarrolladas con `pytest`. 
+Para ejecutar todas las pruebas, asegúrate de haber instalado las dependencias (incluido pytest) y ejecuta el siguiente comando en la raíz del proyecto:
+
+```bash
+pytest tests/
+```
