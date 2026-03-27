@@ -45,3 +45,13 @@ Luego selecciona 2 para iniciar.
 
 - El código soporta Windows/Linux/macOS para beep y limpieza de pantalla.
 - Se utiliza `asistencia_ia.md` para registrar el proceso de desarrollo paso a paso.
+
+## Pruebas y Desarrollo
+
+Para asegurar el correcto funcionamiento del temporizador se han desarrollado pruebas unitarias y de integración en la carpeta `tests/` utilizando **pytest**.
+
+Para ejecutarlas localmente:
+1. Asegúrate de instalar las dependencias: `pip install -r requirements.txt`
+2. Ejecuta el comando: `pytest tests/`
+
+Las pruebas verificarán automáticamente la robustez de la configuración, el formato de la barra de progreso, las notificaciones integradas y realizarán una simulación limpia de un ciclo completo sin necesidad de esperar en tiempo real.
